@@ -4,7 +4,7 @@
 const AdminProductsPage = () => {
     return(
         <>
-            <p>Dashboard Products Page</p>
+            <p>Carts Products Page</p>
         </>
     )
 }

@@ -7,7 +7,7 @@ import {
 export const SidebarItems = [
   {
     title: "Dashboard",
-    href: "/superadmin/dashboard",
+    href: "/superadmin",
     icon: <IconReplaceFilled />,
   },
   {
