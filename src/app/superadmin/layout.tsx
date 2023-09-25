@@ -1,5 +1,3 @@
-"use client";
-
 import Sidebar from "@/components/organisms/sidebar/superadmin/Sidebar";
 
 export default function DashboardLayout({
@@ -8,11 +6,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row h-screen w-screen">
+    <div className="flex flex-row ">
       <Sidebar />
-      <section className="flex-1">
-        {children}
-      </section>
+      <main className="flex-1">{children}</main>
     </div>
   );
 }

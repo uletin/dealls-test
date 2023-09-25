@@ -1,3 +1,5 @@
+"use client";
+
 import PrimaryButton from "@/components/atoms/button/PrimaryButton";
 import { SidebarItems } from "./SidebarItems";
 import H1TextField from "@/components/atoms/textField/H1Text";
@@ -7,7 +9,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col w-2/12 h-full py-6 bg-[#F1F2F6]">
+    <aside className="sticky top-0 flex flex-col w-2/12 h-screen py-6 bg-[#F1F2F6]">
       <div className="pb-6">
         <H1TextField text="Dealls" alignText="center" />
       </div>
@@ -23,7 +25,7 @@ const Sidebar = () => {
           />
         ))}
       </div>
-    </div>
+    </aside>
   );
 };
 
