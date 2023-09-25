@@ -8,7 +8,8 @@ import {
 
 interface IPrimaryCards {
   title: string;
-  description: string;
+  brand: string;
+  category: string;
   rating: number;
   price: number;
   stock: number;
@@ -17,7 +18,8 @@ interface IPrimaryCards {
 
 const PrimaryCards = ({
   title,
-  description,
+  brand,
+  category,
   rating,
   price,
   stock,
@@ -30,28 +32,30 @@ const PrimaryCards = ({
           <IconDevices />
           <div>
             <p className="text-[24px] font-medium">{title.substring(0, 8)}</p>
-            <p>{description.substring(0, 15)}</p>
+            <p>
+              {brand} | {category}
+            </p>
           </div>
         </div>
         <div className="flex gap-3">
           <IconStarFilled />
-          <div>{rating}</div>
+          <p>{rating}</p>
         </div>
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap gap-3 items-center">
         <div className="flex gap-1">
           <IconCurrencyDollar />
           <div>
-            <p>`${price}`</p>
+            <p>${price}</p>
           </div>
         </div>
         <div className="flex gap-1">
           <IconPackages />
-          <div>`{stock} pcs`</div>
+          <p>{stock} pcs</p>
         </div>
         <div className="flex gap-1">
           <IconDiscount />
-          <div>`{discount}%`</div>
+          <p>{discount}%</p>
         </div>
       </div>
     </div>
