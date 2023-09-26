@@ -4,7 +4,6 @@ import H2TextField from "@/components/atoms/textField/H2Text";
 import apiService from "@/service/api/apiService";
 import UrlService from "@/service/url/UrlService";
 import { Suspense } from "react";
-import ProductsCard from "@/components/atoms/cards/ProductsCard";
 import CartsCard from "@/components/atoms/cards/CartsCard";
 
 const CartLists = async () => {
@@ -13,8 +12,6 @@ const CartLists = async () => {
   const headers = {};
 
   const { carts } = await getProducts.get(url.endpoint.carts, headers);
-
-  console.log(carts)
 
   return (
     <>
@@ -26,6 +23,7 @@ const CartLists = async () => {
           total={cart.total}
           totalProducts={cart.totalProducts}
           totalQuantity={cart.totalQuantity}
+          href={`/superadmin/carts/${cart.id}`}
         />
       ))}
     </>
