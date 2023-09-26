@@ -2,7 +2,7 @@ class UrlService {
   endpoint = {
     products: "products",
     carts: "carts",
-    searchProducts : "products/search?q="
+    searchProducts : "products/search?q=",
   };
 }
 

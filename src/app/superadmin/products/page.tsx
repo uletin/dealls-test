@@ -1,10 +1,10 @@
 "use client";
 
 import H2TextField from "@/components/atoms/textField/H2Text";
-import PrimaryCards from "@/components/cards/PrimaryCard";
 import apiService from "@/service/api/apiService";
 import UrlService from "@/service/url/UrlService";
 import { Suspense } from "react";
+import ProductsCard from "@/components/atoms/cards/ProductsCard";
 
 const ProductLists = async () => {
   const getProducts: any = new apiService();
@@ -16,7 +16,7 @@ const ProductLists = async () => {
   return (
     <>
       {products.map((product: any, index: number) => (
-        <PrimaryCards
+        <ProductsCard
           key={index}
           title={product.title}
           brand={product.brand}

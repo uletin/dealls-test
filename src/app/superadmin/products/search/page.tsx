@@ -1,12 +1,11 @@
 "use client";
 
-import Search from "@/components/atoms/search/Search";
 import H2TextField from "@/components/atoms/textField/H2Text";
-import PrimaryCards from "@/components/cards/PrimaryCard";
 import apiService from "@/service/api/apiService";
 import UrlService from "@/service/url/UrlService";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import ProductsCard from "@/components/atoms/cards/ProductsCard";
 
 const ResultSearchProduct = async ({ headers, param }: any) => {
   const getProducts: any = new apiService();
@@ -22,7 +21,7 @@ const ResultSearchProduct = async ({ headers, param }: any) => {
   return (
     <>
       {products.map((product: any, index: number) => (
-        <PrimaryCards
+        <ProductsCard
           key={index}
           title={product.title}
           brand={product.brand}
@@ -46,7 +45,7 @@ const ResultSearchInput = () => {
   return (
     <div className="p-6">
       <div className="pb-6">
-        <H2TextField text="Products" alignText="left" />
+        <H2TextField text="Hasil Pencarian" alignText="left" />
       </div>
       <div className="flex flex-wrap justify-center gap-3">
         <Suspense fallback={<p>Loading ...</p>}>
