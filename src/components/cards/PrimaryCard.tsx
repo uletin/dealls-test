@@ -26,12 +26,12 @@ const PrimaryCards = ({
   discount,
 }: IPrimaryCards) => {
   return (
-    <div className="border-2 border-gray-200 p-5 w-[20rem] rounded-md">
+    <div className="flex flex-col border-2 border-gray-200 p-5 rounded-md w-[32%] hover:bg-white ">
       <div className="flex gap-3 justify-between items-center pb-5">
         <div className="flex gap-3 items-start">
           <IconDevices />
           <div>
-            <p className="text-[24px] font-medium">{title.substring(0, 8)}</p>
+            <p className="text-[24px] font-medium">{title.substring(0, 11)}</p>
             <p>
               {brand} | {category}
             </p>
@@ -42,7 +42,7 @@ const PrimaryCards = ({
           <p>{rating}</p>
         </div>
       </div>
-      <div className="flex flex-wrap gap-3 items-center">
+      <div className="flex flex-wrap gap-3 justify-center mt-auto">
         <div className="flex gap-1">
           <IconCurrencyDollar />
           <div>
