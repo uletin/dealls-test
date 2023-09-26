@@ -14,7 +14,7 @@ const ProductLists = async () => {
 
   return (
     <>
-      {products?.map((product: any, index: number) => (
+      {products.map((product: any, index: number) => (
         <PrimaryCards
           key={index}
           title={product.title}

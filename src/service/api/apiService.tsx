@@ -1,5 +1,5 @@
 class apiService {
-  get = (endpoint, headers) => {
+  get = (endpoint : any, headers:any) => {
     const response = fetch(`https://dummyjson.com/${endpoint}`, {
       method: "GET",
       headers: headers,
@@ -15,7 +15,7 @@ class apiService {
     return response;
   };
 
-  getById = (endpoint, headers, params) => {
+  getById = (endpoint:any, headers:any, params:any) => {
     const response = fetch(`https://dummyjson.com/${endpoint}/${params}`, {
       method: "GET",
       headers: headers,
