@@ -1,8 +1,11 @@
 "use client";
 
+import ShoppingCartsCard from "@/components/atoms/cards/ShoppingCartsCard";
+import H1TextField from "@/components/atoms/textField/H1Text";
 import H2TextField from "@/components/atoms/textField/H2Text";
 import apiService from "@/service/api/apiService";
 import UrlService from "@/service/url/UrlService";
+import { IconPacman, IconShoppingBag } from "@tabler/icons-react";
 import { useParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -16,68 +19,41 @@ const GetCartById = async ({ id }: any) => {
   const users = await api.getById(url.endpoint.users, headers, getUserId)
   const userFullname = `${users.firstName} ${users.lastName}`
 
-  const tableHeader = [
-    {
-      title: "Product Name",
-    },
-    {
-      title: "Price",
-    },
-    {
-      title: "Qty",
-    },
-    {
-      title: "Total",
-    },
-    {
-      title: "Discount Percentage",
-    },
-    {
-      title: "Discount Price",
-    },
-  ];
-
   return (
     <>
-      <H2TextField text={`Cart ${carts.id}`} alignText="left" />
-      <div>
-        <p className="pb-6">Detail</p>
-        <div className="flex gap-5">
-          <p>User : {userFullname}</p>
-          <p>Total Belanja : ${carts.total}</p>
-          <p>Total Bayar : ${carts.discountedTotal} </p>
-          <p>Total Products : {carts.totalProducts}</p>
-          <p>Total Quantity : {carts.totalQuantity}</p>
+      <H1TextField text="Shopping Cart" alignText="left" />
+      <div className="flex flex-row gap-5 pt-6 items-start">
+        <div className="flex flex-col gap-3 w-1/2">
+          {carts.products.map((cart:any, index:any) => (
+            <ShoppingCartsCard key={index} productName={cart.title} price={cart.price} discount={cart.discountPercentage} qty={cart.quantity} />
+          ))}
         </div>
-        <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                {tableHeader.map((header, index) => (
-                  <th key={index} scope="col" className="px-6 py-3">
-                    {header.title}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {carts?.products.map((product: any, index: any) => (
-                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {product.title}
-                    </th>
-                    <td className="px-6 py-4">{product.price}</td>
-                    <td className="px-6 py-4">{product.quantity}</td>
-                    <td className="px-6 py-4">{product.total}</td>
-                    <td className="px-6 py-4">{product.discountPercentage}</td>
-                    <td className="px-6 py-4">{product.discountedPrice}</td>
-                  </tr>
-              ))}
-            </tbody>
-          </table>
+
+        <div className="w-1/2 rounded-lg px-6 py-3 bg-gray-300">
+          <div className="flex gap-2 items-center">
+            <IconPacman size={32} />
+            <H2TextField text={userFullname} alignText="left" />
+          </div>
+          <div className="flex flex-col items-end">
+            <div className="flex flex-col gap-1 w-1/2">
+              <div className="flex justify-between">
+                <p>Total Products</p>
+                <p>{carts.totalProducts} pcs</p>
+              </div>
+              <div className="flex justify-between">
+                <p>Total Quantity</p>
+                <p>{carts.totalQuantity} pcs</p>
+              </div>
+              <div className="flex justify-between">
+                <p>Total Before Discount</p>
+                <p>{`$${carts.total}`}</p>
+              </div>
+              <div className="flex justify-between">
+                <H2TextField text="Total" alignText="left" />
+                <H2TextField text={`$${carts.discountedTotal}`} alignText="left" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
