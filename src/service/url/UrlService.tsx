@@ -3,6 +3,7 @@ class UrlService {
     products: "products",
     carts: "carts",
     searchProducts : "products/search?q=",
+    users : "users",
   };
 }
 

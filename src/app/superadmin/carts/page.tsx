@@ -7,18 +7,27 @@ import { Suspense } from "react";
 import CartsCard from "@/components/atoms/cards/CartsCard";
 
 const CartLists = async () => {
-  const getProducts: any = new apiService();
+  const api: any = new apiService();
   const url: any = new UrlService();
   const headers = {};
+  const limit = 5
+  const skip = 5
 
-  const { carts } = await getProducts.get(url.endpoint.carts, headers);
+  const { carts } = await api.get(url.endpoint.carts, headers, limit, skip);
+
+  const getUserFullname = async (id:number) => {
+      const {firstName, lastName } = await api.getById(url.endpoint.users, headers, id)
+      const fullname = `${firstName} ${lastName}`
+
+      return fullname
+  }
 
   return (
     <>
       {carts.map((cart: any, index: any) => (
         <CartsCard
           key={index}
-          fullname={cart.userId}
+          fullname={getUserFullname(cart.userId)}
           discountedTotal={cart.discountedTotal}
           total={cart.total}
           totalProducts={cart.totalProducts}

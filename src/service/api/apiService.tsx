@@ -1,6 +1,6 @@
 class apiService {
-  get = (endpoint : any, headers:any,) => {
-    const response = fetch(`https://dummyjson.com/${endpoint}`, {
+  get = (endpoint : any, headers:any, limit:number, skip:number) => {
+    const response = fetch(`https://dummyjson.com/${endpoint}?limit=${limit}&skip=${skip}`, {
       method: "GET",
       headers: headers,
     }).then(async (response) => {

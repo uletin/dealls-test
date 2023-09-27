@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 
 interface ICartCards {
-  fullname: string;
+  fullname: any;
   total: number;
   discountedTotal: number;
   totalProducts: number;

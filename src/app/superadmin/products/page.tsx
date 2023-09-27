@@ -10,8 +10,10 @@ const ProductLists = async () => {
   const getProducts: any = new apiService();
   const url: any = new UrlService();
   const headers = {};
+  const limit = 10
+  const skip = 10
 
-  const { products } = await getProducts.get(url.endpoint.products, headers);
+  const { products } = await getProducts.get(url.endpoint.products, headers, limit, skip);
 
   return (
     <>
