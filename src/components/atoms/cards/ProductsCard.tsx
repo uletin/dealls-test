@@ -26,7 +26,7 @@ const ProductsCard = ({
   discount,
 }: IProductsCards) => {
   return (
-    <div className="flex flex-col border-2 border-gray-200 p-5 rounded-md w-[32%] hover:bg-white ">
+    <div className="flex flex-col border-2 border-gray-200 p-5 rounded-md w-full lg:w-[32%] hover:bg-white ">
       <div className="flex gap-3 justify-between items-center pb-5">
         <div className="flex gap-3 items-start">
           <IconDevices />
